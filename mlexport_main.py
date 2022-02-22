@@ -41,8 +41,8 @@ numberOfClassLabels = len(classLabels)
 outputSize = numberOfClassLabels + 5
 
 #  Attention: Some models are reversed!
-#reverseModel = False
-reverseModel = True
+reverseModel = False
+#reverseModel = True
 
 strides = [8, 16, 32]
 if reverseModel:
@@ -312,9 +312,9 @@ def main():
 
     Path(opt.model_output_directory).mkdir(parents=True, exist_ok=True)
 
-    sampleInput = torch.zeros((1, 3, 640, 640))
-    checkInputs = [(torch.rand(1, 3, 640, 640),),
-                   (torch.rand(1, 3, 640, 640),)]
+    sampleInput = torch.zeros((1, 3, 416, 416))
+    checkInputs = [(torch.rand(1, 3, 416, 416),),
+                   (torch.rand(1, 3, 416, 416),)]
 
     model = torch.load(opt.model_input_path, map_location=torch.device('cpu'))[
         'model'].float()
