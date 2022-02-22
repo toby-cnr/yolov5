@@ -35,8 +35,9 @@ model_input_path = 'gdrive/MyDrive/Models/best.pt'
 model_output_directory = "gdrive/MyDrive/Models/"
 model_output_name = 'yolov5x-export-best'
 # The labels of your model, pretrained YOLOv5 models usually use the coco dataset and have 80 classes
-# classLabels = [f"label{i}" for i in range(80)]
-classLabels = ['3d', 'front', 'info', 'side', 'top']
+#classLabels = [f"label{i}" for i in range(80)]
+classLabels = [f"['3d', 'front', 'info', 'side', 'top']{i}" for i in range(80)]
+# classLabels = ['3d', 'front', 'info', 'side', 'top']
 numberOfClassLabels = len(classLabels)
 outputSize = numberOfClassLabels + 5
 
