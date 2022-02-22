@@ -312,20 +312,23 @@ def main():
 
     Path(opt.model_output_directory).mkdir(parents=True, exist_ok=True)
 
+    ###sampleInput = torch.zeros((1, 3, 640, 640))
+    ###checkInputs = [(torch.rand(1, 3, 640, 640),),
+    ###               (torch.rand(1, 3, 640, 640),)]
     sampleInput = torch.zeros((1, 3, 416, 416))
-    checkInputs = [(torch.rand(1, 3, 416, 416),),
-                   (torch.rand(1, 3, 416, 416),)]
-
-    model = torch.load(opt.model_input_path, map_location=torch.device('cpu'))[
-        'model'].float()
+    checkInputs = [(torch.rand(1, 3, 416, 416),),(torch.rand(1, 3, 416, 416),)]
+    
+    model = torch.load(opt.model_input_path, map_location=torch.device('cpu'))['model'].float()
 
     model.eval()
     model.model[-1].export = True
     # Dry run, necessary for correct tracing!
-    model(sampleInput)
+    ###model(sampleInput)
 
-    ts = exportTorchscript(model, sampleInput, checkInputs,
-                           f"{opt.model_output_directory}/{opt.model_output_name}.torchscript.pt")
+    ###ts = exportTorchscript(model, sampleInput, checkInputs,
+    ###                       f"{opt.model_output_directory}/{opt.model_output_name}.torchscript.pt")
+    
+    ts = "gdrive/MyDrive/Models/best.torchscript"
 
     # Convert pytorch to raw coreml model
     modelSpec = convertToCoremlSpec(ts, sampleInput)
