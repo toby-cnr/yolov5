@@ -41,7 +41,8 @@ numberOfClassLabels = len(classLabels)
 outputSize = numberOfClassLabels + 5
 
 #  Attention: Some models are reversed!
-reverseModel = False
+#reverseModel = False
+reverseModel = True
 
 strides = [8, 16, 32]
 if reverseModel:
